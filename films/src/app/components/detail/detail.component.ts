@@ -11,7 +11,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class DetailComponent implements OnInit {
 
   @Input() id;
-  movie: MovieDetail;
+  movie: MovieDetail = {};
   cast: Cast[] = [];
   hidden = 150;
   slideOptCast = {
@@ -39,7 +39,7 @@ export class DetailComponent implements OnInit {
   }
 
   fav(){
-    
+
   }
 
 }

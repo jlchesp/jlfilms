@@ -1,6 +1,6 @@
 <ion-content color="dark">
   <ion-label class="title">
-    <h1>{{movie.title}}</h1>
+    <h1>{{movie.original_title}}</h1>
   </ion-label>
 
   <img [src]="movie.backdrop_path | image" *ngIf="movie.backdrop_path">
@@ -67,14 +67,12 @@
     <ion-buttons slot="start">
       <ion-button (click)="back()">
         <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
-        <ion-label>Back</ion-label>
       </ion-button>
     </ion-buttons>
 
     <ion-buttons slot="end">
       <ion-button (click)="fav()">
         <ion-icon slot="end" name="star-outline"></ion-icon>
-        <ion-label>Fav</ion-label>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
