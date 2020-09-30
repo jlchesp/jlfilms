@@ -1,0 +1,81 @@
+<ion-content color="dark">
+  <ion-label class="title">
+    <h1>{{movie.title}}</h1>
+  </ion-label>
+
+  <img [src]="movie.backdrop_path | image" *ngIf="movie.backdrop_path">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" class="poster-detail-in">
+        <ion-card class="posterDetail">
+          <img [src]="movie.poster_path | image" *ngIf="movie.poster_path">
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-item color="dark">
+          <ion-icon slot="start" name="thumbs-up" color="danger"></ion-icon>
+          <ion-label>Rating</ion-label>
+          <ion-note slot="end" color="danger">{{movie.vote_average}}</ion-note>
+        </ion-item>
+        <ion-item color="dark">
+          <ion-icon slot="start" name="people" color="danger"></ion-icon>
+          <label>Votes</label>
+          <ion-note slot="end" color="danger">{{movie.vote_count}}</ion-note>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-label>{{movie.overview | slice: 0: hidden}}...</ion-label>
+        <ion-label color="danger" (click)="hidden = 5000" *ngIf="hidden !== 5000">See more</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-chip color="danger" *ngFor="let genre of movie.genres">
+          <ion-label>{{genre.name}}</ion-label>
+        </ion-chip>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col>
+        <ion-label>Cast</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-slides [options]="slideOptCast">
+    <ion-slide *ngFor="let actor of cast">
+      <ion-card class="card-actor">
+        <img src="../../../assets/no-image-banner.jpg" *ngIf="!actor.profile_path">
+        <img [src]="actor.profile_path | image" *ngIf="actor.profile_path">
+        <ion-label class="actor-name">{{actor.name}}</ion-label>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+        <ion-label>Back</ion-label>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="fav()">
+        <ion-icon slot="end" name="star-outline"></ion-icon>
+        <ion-label>Fav</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

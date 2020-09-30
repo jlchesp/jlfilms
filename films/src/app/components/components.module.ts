@@ -1,3 +1,5 @@
+import { DetailComponent } from './detail/detail.component';
+import { SlideshowParComponent } from './slideshow-par/slideshow-par.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
@@ -8,7 +10,12 @@ import { SlideshowPosterComponent } from './slideshow-poster/slideshow-poster.co
 
 
 @NgModule({
-  declarations: [SlideshowBackdropComponent, SlideshowPosterComponent],
+  declarations: [
+    SlideshowBackdropComponent,
+    SlideshowPosterComponent,
+    SlideshowParComponent,
+    DetailComponent
+  ],
   imports: [
     CommonModule,
     IonicModule,
@@ -16,7 +23,12 @@ import { SlideshowPosterComponent } from './slideshow-poster/slideshow-poster.co
   ],
   exports: [
     SlideshowBackdropComponent,
-    SlideshowPosterComponent
+    SlideshowPosterComponent,
+    SlideshowParComponent,
+    DetailComponent
+  ],
+  entryComponents: [
+    DetailComponent
   ]
 })
 export class ComponentsModule { }

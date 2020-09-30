@@ -1,25 +1,31 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Movie } from 'src/app/Interfaces/interfaces';
 import { DetailComponent } from '../detail/detail.component';
 
 @Component({
-  selector: 'app-slideshow-poster',
-  templateUrl: './slideshow-poster.component.html',
-  styleUrls: ['./slideshow-poster.component.scss'],
+  selector: 'app-slideshow-par',
+  templateUrl: './slideshow-par.component.html',
+  styleUrls: ['./slideshow-par.component.scss'],
 })
-export class SlideshowPosterComponent implements OnInit {
+export class SlideshowParComponent implements OnInit {
 
   @Input() moviesPoster: Movie[] = [];
+  @Output() moreFilms = new EventEmitter();
 
   slideOpts = {
     slidesPerView: 2.5,
-    freeMode: true
+    freeMode: true,
+    spaceBetween: -75
   };
 
   constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {}
+
+  onClick(){
+    this.moreFilms.emit();
+  }
 
   async details(id: string) {
     const modal = await this.modalCtrl.create({
