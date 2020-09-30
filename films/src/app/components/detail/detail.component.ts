@@ -16,8 +16,7 @@ export class DetailComponent implements OnInit {
   hidden = 150;
   slideOptCast = {
     slidesPerView: 3.3,
-    freeMode: true,
-    spacebetween: -5
+    freeMode: true
   };
 
   constructor(private moviesService: MoviesService, private modalCtrl: ModalController) { }
