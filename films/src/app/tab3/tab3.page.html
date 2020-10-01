@@ -1,10 +1,20 @@
-<ion-header [translucent]="false">
-  <ion-toolbar color="dark">
-    <ion-title>
-      Favourites
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true" color="dark">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h3>Favorites</h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div *ngFor="let movie of favoriteGenre">
+    <ion-grid *ngIf="movie.movs.length > 0">
+      <ion-row>
+        <ion-col>
+          <h4>{{movie.genero}}</h4>
+        </ion-col>
+      </ion-row>
+      <app-slideshow-poster [moviesPoster]="movie.movs"></app-slideshow-poster>
+    </ion-grid>
+  </div>
 </ion-content>

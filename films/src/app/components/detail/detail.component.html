@@ -54,7 +54,7 @@
   <ion-slides [options]="slideOptCast">
     <ion-slide *ngFor="let actor of cast">
       <ion-card class="card-actor">
-        <img src="../../../assets/no-image-banner.jpg" *ngIf="!actor.profile_path">
+        <img src="../../../assets/no-avatar.jpg" *ngIf="!actor.profile_path">
         <img [src]="actor.profile_path | image" *ngIf="actor.profile_path">
         <ion-label class="actor-name">{{actor.name}}</ion-label>
       </ion-card>
@@ -72,7 +72,7 @@
 
     <ion-buttons slot="end">
       <ion-button (click)="fav()">
-        <ion-icon slot="end" name="star-outline"></ion-icon>
+        <ion-icon slot="end" [name]="star"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>

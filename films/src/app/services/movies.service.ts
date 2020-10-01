@@ -1,4 +1,4 @@
-import { MovieDetail, ResponseCredits } from './../Interfaces/interfaces';
+import { MovieDetail, ResponseCredits, Genre } from './../Interfaces/interfaces';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
@@ -14,6 +14,7 @@ const APY_KEY = environment.api_key;
 export class MoviesService {
 
   private popularPage = 0;
+  genres: any[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -30,16 +31,31 @@ export class MoviesService {
     return this.http.get<ResponseMDB>(`${URL}/discover/movie?primary_release_date.gte=${init}&primary_release_date.lte=${end}&${APY_KEY}`);
   }
 
-  getPopular(){
+  getPopular() {
     this.popularPage++;
     return this.http.get<ResponseMDB>(`${URL}/discover/movie?sort_by=popularity.desc&page=${this.popularPage}&${APY_KEY}`);
   }
 
-  getDetail(id: string){
+  getDetail(id: string) {
     return this.http.get<MovieDetail>(`${URL}/movie/${id}?${APY_KEY}`);
   }
 
-  getCast(id: string){
+  getCast(id: string) {
     return this.http.get<ResponseCredits>(`${URL}/movie/${id}/credits?${APY_KEY}`);
+  }
+
+  searchMovie(movie: string) {
+    return this.http.get<ResponseMDB>(`${URL}/search/movie?query=${movie}&${APY_KEY}`);
+  }
+
+  loadGenre(): Promise<Genre[]> {
+
+    return new Promise(resolve => {
+      this.http.get<ResponseMDB>(`${URL}/genre/movie/list?${APY_KEY}`)
+        .subscribe(res => {
+          this.genres = res['genres'];
+          resolve(this.genres);
+        });
+    });
   }
 }

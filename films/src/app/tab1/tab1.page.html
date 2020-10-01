@@ -1,14 +1,14 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar color="dark">
     <ion-title>
       Home
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content [fullscreen]="true" color="dark">
 
-  <ion-grid fixed>
+  <ion-grid>
     <ion-row>
       <ion-col>
         <h3>New Films</h3>
@@ -18,7 +18,7 @@
 
   <app-slideshow-backdrop [movies]="recentMovies"></app-slideshow-backdrop>
 
-  <ion-grid fixed>
+  <ion-grid>
     <ion-row>
       <ion-col>
         <h3>Billboard</h3>
@@ -27,7 +27,7 @@
   </ion-grid>
   <app-slideshow-poster [moviesPoster]="recentMovies"></app-slideshow-poster>
 
-  <ion-grid fixed>
+  <ion-grid>
     <ion-row>
       <ion-col>
         <h3>Popular</h3>
